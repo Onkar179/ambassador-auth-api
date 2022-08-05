@@ -1,0 +1,15 @@
+---
+apiVersion: getambassador.io/v3alpha1
+kind: Mapping
+metadata:
+  name: quote-backend
+  namespace: ambassador
+spec:
+  hostname: "*"
+  prefix: "/"
+  service: http://nginx-service:80
+  headers:
+    # Bearer authentication
+    # Ambassador will return a 404 error unless the Authorization header value is set as below on the incoming requests.
+    Authorization: "Bearer 1234"
+
